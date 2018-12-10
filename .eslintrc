@@ -15,9 +15,11 @@
     "no-param-reassign": ["error", {"props": false}],
     "no-process-exit": "error",
     "no-useless-call": "error",
-    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
-    "react/no-multi-comp": [0, { "ignoreStateless": true }],
-    "react/require-optimization": "off",
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "padded-blocks": "off",
+    "max-len": ["error", { "code": 120 }],
+    "quotes": "off",
+    "one-var": "off",
+    "indent": 2
   }
 }

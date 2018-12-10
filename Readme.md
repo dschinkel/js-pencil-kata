@@ -1,6 +1,14 @@
 
 # JS Pencil Kata
-This kata was composed by a group of prisoners at the Marion Correctional Institution in Marion, OH as a way to teach test-driven developmentto one another
+This kata was composed by a group of prisoners at the Marion Correctional Institution in Marion, OH as a way to teach test-driven development to one another
+
+# Initial Brainstorming
+### I see two ways to approach this kata via TDD:
+
+#### outside-in
+Start with pencil which forces you to create lower-level constructs (paper, etc.)
+#### inside-out
+Start with paper then figure out what your higher level constructs might be and how they might use paper
 
 # Setup
 run command `yarn`
