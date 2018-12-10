@@ -2,3 +2,8 @@ Decisions
 
 - to add a text param or not to Pencil.write() for first test or to
   let next test triangulate which will require a param to be there next
+- need ability to clear state so that tests are isolated
+  so had to test drive clear() for State and Paper first
+  and use those in Paper and Pencil tests but this feels
+  just wrong, but only way for now...will find a better
+  route next time

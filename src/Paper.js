@@ -1,9 +1,17 @@
+import State from './State';
 
-function write() {
-  return "When fate hands you a lemon";
+let state;
+
+function write(text) {
+  return state.update(text);
 }
-const Paper = () => ({
-  write
-});
+
+const Paper = () => {
+  state = State();
+
+  return {
+    write
+  };
+};
 
 export default Paper;

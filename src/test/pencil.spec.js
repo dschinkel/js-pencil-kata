@@ -15,10 +15,12 @@ Text written by the pencil should always be appended to existing text on the pap
 import Pencil from '../Pencil';
 
 describe('Pencil', () => {
-  let pencil;
+  let pencil,
+    initialText;
 
   beforeEach(() => {
     pencil = Pencil();
+    initialText = "When fate hands you a lemon";
   });
 
   describe('Positive Scenarios', () => {
@@ -27,14 +29,17 @@ describe('Pencil', () => {
     });
 
     it('writes text to a piece of paper', () => {
-      const output = pencil.write("When fate hands you a lemon");
-      expect(output).to.equal("When fate hands you a lemon");
+      const output = pencil.write(initialText);
+      expect(output).to.equal(initialText);
     });
 
-    // it('appends text to existing text on paper', () => {
-    //   const output =
-    //   expect(true).to.be.true;
-    // });
+    it('appends text to a sheet of paper with existing text', () => {
+      const additionalText = ", make lemonade";
+      pencil.write(initialText);
+      const output = pencil.write(additionalText);
+
+      expect(output).to.equal("When fate hands you a lemon, make lemonade");
+    });
   });
 
   describe('Negative Scenarios', () => {
