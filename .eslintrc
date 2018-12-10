@@ -16,12 +16,13 @@
     "no-process-exit": "error",
     "no-useless-call": "error",
     "no-unused-expressions": "off",
+    "no-trailing-spaces": "off",
+    "no-use-before-define": "off",
     "semi": ["error", "always"],
     "padded-blocks": "off",
-    "max-len": ["error", { "code": 120 }],
-    "quotes": "off",
-    "one-var": "off",
+    "max-len": ["error", { "code": 100 }],
     "indent": 2,
-    "no-trailing-spaces": "off"
+    "quotes": "off",
+    "one-var": "off"
   }
 }

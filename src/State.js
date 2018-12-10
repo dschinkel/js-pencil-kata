@@ -3,7 +3,7 @@ let currentState = "";
 
 function update(text) {
   currentState += text;
-  return this.getCurrentState();
+  return getCurrentState();
 }
 
 function clear() {
