@@ -20,6 +20,7 @@
     "max-len": ["error", { "code": 120 }],
     "quotes": "off",
     "one-var": "off",
-    "indent": 2
+    "indent": 2,
+    "no-trailing-spaces": "off"
   }
 }
