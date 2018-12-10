@@ -15,15 +15,15 @@ describe('Paper', () => {
     });
 
     it('writes text to a sheet of paper', () => {
-      const output = sheet.write(initialText);
-      expect(output).to.equal(output);
+      sheet.write(initialText);
+      expect(sheet.read()).to.equal(initialText);
     });
 
     it('appends text to existing text', () => {
       sheet.write(initialText);
       const output = sheet.write(", make lemonade");
 
-      expect(output).to.equal("When fate hands you a lemon, make lemonade");
+      expect(sheet.read()).to.equal("When fate hands you a lemon, make lemonade");
     });
 
   });
