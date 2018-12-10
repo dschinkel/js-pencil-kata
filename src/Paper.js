@@ -3,7 +3,7 @@ import State from './State';
 let state;
 
 function write(text, durability) {
-  let finalText = formatTextForDurability(text, durability);
+  const finalText = formatTextForDurability(text, durability);
   return state.update(finalText);
 }
 
