@@ -19,7 +19,7 @@ describe('Paper', () => {
       expect(sheet.read()).to.equal(initialText);
     });
 
-    it('appends text to existing text', () => {
+    it('appends text', () => {
       sheet.write(initialText);
       const output = sheet.write(", make lemonade");
 
@@ -29,6 +29,13 @@ describe('Paper', () => {
   });
 
   describe('Negative Cases', () => {
+    it.only('writes space for characters when pencil is dull', () => {
+      const durability = 9,
+        initialText = "When fate hands",
+        output = sheet.write(initialText, durability);
+
+      expect(output).to.equal("When fate      ");
+    });
   });
 
 });

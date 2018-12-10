@@ -2,6 +2,8 @@
 # JS Pencil Kata
 This kata was composed by a group of prisoners at the Marion Correctional Institution in Marion, OH as a way to teach test-driven development to one another
 
+Kata definition : [PencilKata-Groovy](https://github.com/mcsearchin/PencilKata-Groovy)
+
 # Initial Brainstorming
 ### I see two ways to approach this kata via TDD:
 
