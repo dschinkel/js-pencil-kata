@@ -1,15 +1,17 @@
 import Paper from './Paper';
+import { formatTextForDurability } from './Utility';
 
 let paper,
-  durabliity;
+  durability;
 
 function write(text) {
-  return paper.write(text, durabliity);
+  const finalText = formatTextForDurability(text, durability);
+  return paper.write(finalText);
 }
 
 const Pencil = (pointDurability) => {
   paper = Paper();
-  durabliity = pointDurability;
+  durability = pointDurability;
 
   return {
     write

@@ -29,13 +29,6 @@ describe('Paper', () => {
   });
 
   describe('Negative Cases', () => {
-    it('writes space for characters when pencil is dull', () => {
-      const pointDurability = 9,
-        initialText = "When fate hands",
-        output = sheet.write(initialText, pointDurability);
-
-      expect(output).to.equal("When fate      ");
-    });
 
   });
 
