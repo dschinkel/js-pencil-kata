@@ -1,7 +1,15 @@
 import State from '../State';
 
 describe('State', () => {
-  const state = State();
+  let state;
+
+  beforeEach(() => {
+    state = State();
+  });
+
+  it('initial state is empty', () => {
+    expect(state.getCurrentState()).to.equal("");
+  });
 
   it('holds initial state', () => {
     const currentState = state.update("When fate hands you a lemon");
@@ -9,13 +17,10 @@ describe('State', () => {
   });
 
   it('appends additional text to state', () => {
+    state.update("When fate hands you a lemon");
+
     const currentState = state.update(", make lemonade");
+
     expect(currentState).to.equal("When fate hands you a lemon, make lemonade");
   });
-
-  it('can clear state', () => {
-    const currentState = state.clear();
-    expect(currentState).to.equal("");
-  });
-
 });

@@ -7,14 +7,18 @@ function update(text) {
 }
 
 function clear() {
-  return "";
+  currentState = "";
+}
+
+function getCurrentState() {
+  return currentState;
 }
 
 const State = () => {
-  currentState = "";
+  clear();
 
   return {
-    clear,
+    getCurrentState,
     update
   };
 };
