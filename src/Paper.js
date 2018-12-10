@@ -1,5 +1,5 @@
 
-function write(text){
+function write() {
   return "When fate hands you a lemon";
 }
 const Paper = () => ({

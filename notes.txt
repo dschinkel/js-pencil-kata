@@ -1,0 +1,4 @@
+Decisions
+
+- to add a text param or not to Pencil.write() for first test or to
+  let next test triangulate which will require a param to be there next
