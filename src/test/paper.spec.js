@@ -19,12 +19,12 @@ describe('Paper', () => {
       expect(output).to.equal(output);
     });
 
-    // it('appends text to existing text', () => {
-    //   const sheet = Paper();
-    //   const output = sheet.write(", make lemonade");
-    //
-    //   expect(output).to.equal("When fate hands you a lemon, make lemonade");
-    // });
+    it('appends text to existing text', () => {
+      sheet.write(initialText);
+      const output = sheet.write(", make lemonade");
+
+      expect(output).to.equal("When fate hands you a lemon, make lemonade");
+    });
 
   });
 
