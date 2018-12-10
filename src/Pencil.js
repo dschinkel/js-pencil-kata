@@ -1,13 +1,15 @@
 import Paper from './Paper';
 
-let paper;
+let paper,
+  durabliity;
 
 function write(text) {
-  return paper.write(text);
+  return paper.write(text, durabliity);
 }
 
-const Pencil = () => {
+const Pencil = (pointDurability) => {
   paper = Paper();
+  durabliity = pointDurability;
 
   return {
     write

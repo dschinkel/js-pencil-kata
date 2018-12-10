@@ -42,8 +42,8 @@ describe('Pencil - Point Degradation', () => {
   });
 
   describe('Negative Cases', () => {
-    it('pencil writes spaces for characters after it becomes dull', () => {
-      const pointDurability = 45,
+    it('pencil can no longer write characters after becoming dull', () => {
+      const pointDurability = 43,
         pencil = Pencil(pointDurability),
         output = pencil.write("When fate hands you a lemon, make lemonade or Tea");
 
