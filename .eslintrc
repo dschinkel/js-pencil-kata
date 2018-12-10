@@ -15,6 +15,7 @@
     "no-param-reassign": ["error", {"props": false}],
     "no-process-exit": "error",
     "no-useless-call": "error",
+    "no-unused-expressions": "off",
     "semi": ["error", "always"],
     "padded-blocks": "off",
     "max-len": ["error", { "code": 120 }],
