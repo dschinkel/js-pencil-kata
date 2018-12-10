@@ -21,12 +21,7 @@ describe('Pencil', () => {
       const pencil = Pencil();
       expect(pencil).to.exist;
     });
-    // it('writes text to a piece of paper', () => {
-    //   const pencil = Pencil(),
-    //     output = pencil.write("When fate hands you a lemon");
-    //
-    //   expect(output).to.equal("When fate hands you a lemon");
-    // });
+
   });
 
   describe('Negative Scenarios', () => {
