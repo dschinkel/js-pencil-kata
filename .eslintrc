@@ -18,6 +18,7 @@
     "no-unused-expressions": "off",
     "no-trailing-spaces": "off",
     "no-use-before-define": "off",
+    "one-var-declaration-per-line": "off",
     "semi": ["error", "always"],
     "padded-blocks": "off",
     "max-len": ["error", { "code": 100 }],

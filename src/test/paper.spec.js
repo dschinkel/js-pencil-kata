@@ -29,7 +29,6 @@ describe('Paper', () => {
   });
 
   describe('Negative Cases', () => {
-
   });
 
 });

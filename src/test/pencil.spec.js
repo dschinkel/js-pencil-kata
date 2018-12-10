@@ -2,12 +2,11 @@
 import Pencil from '../Pencil';
 
 describe('Pencil - Write', () => {
-  let pencil,
-    initialText;
+  let pencil, initialText;
 
   beforeEach(() => {
-    pencil = Pencil();
     initialText = "When fate hands you a lemon";
+    pencil = Pencil(initialText.length);
   });
 
   describe('Positive Scenarios', () => {
@@ -47,7 +46,15 @@ describe('Pencil - Point Degradation', () => {
         pencil = Pencil(pointDurability),
         output = pencil.write("When fate hands you a lemon, make lemonade or Tea");
 
-      expect(output).to.equal("When fate hands you a lemon, make lemonade       ");
+      expect(output).to.equal("When fate hands you a lemon, make lemonade or Tea ");
+    });
+    
+    it('lower-case letters degrades pencil point by one', () => {
+      const pointDurability = 4,
+        pencil = Pencil(pointDurability),
+        output = pencil.write("when");
+
+      expect(output).to.equal("when");
     });
   });
 

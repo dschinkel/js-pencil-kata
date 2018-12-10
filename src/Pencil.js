@@ -1,21 +1,32 @@
 import Paper from './Paper';
 
-let paper,
-  durability;
+let paper, durability = 0;
+const dullThreshhold = 42;
 
 function write(text) {
-  const finalText = formatTextForDurability(text, durability);
+  const finalText = formatTextForDurability(text);
   return paper.write(finalText);
 }
 
-function formatTextForDurability(text, durability) {
-  let finalText = text.substring(0, durability);
-  const dullOffset = text.length - durability;
+function formatTextForDurability(text) {
+  let i, durabilityOffset;
 
-  if (dullOffset > 0) {
-    finalText += ' '.repeat(dullOffset);
+  // add offset spaces for any durability left over after point degradation
+  if (durability >= dullThreshhold) {
+    durabilityOffset = durability - dullThreshhold;
+    text += ' '.repeat(durabilityOffset);
   }
-  return finalText;
+
+  // reduce durability for lower-case chars. Do not check spaces though.
+  for (i = 0; i < text.trim().length; i += 1) {
+    if (text.charAt(i) !== text.charAt(i).toUpperCase()) {
+      durability -= 1;
+    }
+  }
+
+  text.substring(0, durability);
+
+  return text;
 }
 
 const Pencil = (pointDurability) => {
