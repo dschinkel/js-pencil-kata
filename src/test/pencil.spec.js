@@ -16,8 +16,12 @@ describe('Pencil - Write', () => {
     });
 
     it('writes text to a piece of paper', () => {
-      const output = pencil.write(initialText);
-      expect(output).to.equal(initialText);
+      const pointDurability = 200,
+        pencil = Pencil(pointDurability),
+
+        output = pencil.write(initialText);
+
+      expect(output).to.equal("When fate hands you a lemon");
     });
 
     it('appends text to a sheet of paper with existing text', () => {
@@ -46,11 +50,11 @@ describe('Pencil - Point Degradation', () => {
 
   describe('Negative Cases', () => {
     it('writes whitespace for characters when pencil is dull', () => {
-      const pointDurability = 43,
+      const pointDurability = 38,
         pencil = Pencil(pointDurability),
         output = pencil.write("When fate hands you a lemon, make lemonade or Tea");
 
-      expect(output).to.equal("When fate hands you a lemon, make lemonade       ");
+      expect(output).to.equal("When fate hands you a lemon, make lemonade o           ");
     });
 
     it('whitespace does not degrade durability', () => {

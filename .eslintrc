@@ -21,7 +21,7 @@
     "one-var-declaration-per-line": "off",
     "semi": ["error", "always"],
     "padded-blocks": "off",
-    "max-len": ["error", { "code": 100 }],
+    "max-len": ["error", { "code": 150 }],
     "indent": 2,
     "quotes": "off",
     "one-var": "off"
