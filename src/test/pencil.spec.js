@@ -2,17 +2,12 @@
 import Pencil from '../Pencil';
 
 describe('Pencil - Write', () => {
-  let pencil, initialText, pointDurability;
 
-  beforeEach(() => {
-    initialText = "When fate hands you a lemon";
-    pointDurability = initialText.length;
-    pencil = Pencil(pointDurability);
-  });
+  const initialText = "When fate hands you a lemon";
 
   describe('Positive Scenarios', () => {
     it('we have a pencil to write with', () => {
-      expect(pencil).to.exist;
+      expect(Pencil(0)).to.exist;
     });
 
     it('writes text to a piece of paper', () => {

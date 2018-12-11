@@ -7,15 +7,18 @@ function write(text) {
   return paper.write(finalText);
 }
 
+function isUpperCase(text) {
+  return text === text.toUpperCase();
+}
+
 function scoreDurabilityDegradation(text) {
   let score = 0, i;
 
   for (i = 0; i < text.length; i += 1) {
-    if (text.charAt(i) === ' ') {
-      score += 0;
-    } else if (text.charAt(i) !== text.charAt(i).toUpperCase()) {
+    if (text.charAt(i) === ' ') { continue; }
+    else if (!isUpperCase(text.charAt(i))) {
       score += 1;
-    } else if (text.charAt(i) === text.charAt(i).toUpperCase()) {
+    } else if (isUpperCase(text.charAt(i))) {
       score += 2;
     }
   }
@@ -23,20 +26,30 @@ function scoreDurabilityDegradation(text) {
   return score;
 }
 
+function addWhitespace(text, textOverflow, durabilityText) {
+  const totalWhitespaceToPad = text.length - originalDurability || textOverflow;
+
+  let textWithWhitespaces = durabilityText;
+  textWithWhitespaces += ' '.repeat(totalWhitespaceToPad);
+
+  return textWithWhitespaces;
+}
+
+function trimTextForScore(textDurabilityOverflow, text) {
+  let finalText;
+
+  if (textDurabilityOverflow > 0) {
+    const textTrimmed = text.substring(0, text.length - textDurabilityOverflow);
+    finalText = addWhitespace(text, textDurabilityOverflow, textTrimmed);
+  }
+  return finalText;
+}
 
 function addDurabilityOffsetSpaces(text) {
-  let scoredDurabilityText;
-
   const durabilityDegradeScore = scoreDurabilityDegradation(text),
     textDurabilityOverflow = durabilityDegradeScore - originalDurability;
 
-  if (textDurabilityOverflow > 0) {
-    scoredDurabilityText = text.substring(0, text.length - textDurabilityOverflow);
-    const totalWhitespaceToPad = text.length - originalDurability || textDurabilityOverflow;
-
-    scoredDurabilityText += ' '.repeat(totalWhitespaceToPad);
-  }
-
+  const scoredDurabilityText = trimTextForScore(textDurabilityOverflow, text);
 
   return scoredDurabilityText || text;
 }
