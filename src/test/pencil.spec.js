@@ -37,7 +37,6 @@ describe('Pencil - Write', () => {
 describe('Pencil - Point Degradation', () => {
 
   describe('Positive Cases', () => {
-
   });
 
   describe('Negative Cases', () => {
