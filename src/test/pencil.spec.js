@@ -2,11 +2,12 @@
 import Pencil from '../Pencil';
 
 describe('Pencil - Write', () => {
-  let pencil, initialText;
+  let pencil, initialText, pointDurability;
 
   beforeEach(() => {
     initialText = "When fate hands you a lemon";
-    pencil = Pencil(initialText.length);
+    pointDurability = initialText.length;
+    pencil = Pencil(pointDurability);
   });
 
   describe('Positive Scenarios', () => {
@@ -20,7 +21,10 @@ describe('Pencil - Write', () => {
     });
 
     it('appends text to a sheet of paper with existing text', () => {
-      const additionalText = ", make lemonade";
+      const additionalText = ", make lemonade",
+        pointDurability = initialText.length + 15,
+        pencil = Pencil(pointDurability);
+
       pencil.write(initialText);
       const output = pencil.write(additionalText);
 
@@ -37,23 +41,46 @@ describe('Pencil - Write', () => {
 describe('Pencil - Point Degradation', () => {
 
   describe('Positive Cases', () => {
+
   });
 
   describe('Negative Cases', () => {
-    it('writes space for characters when pencil is dull', () => {
+    it('writes whitespace for characters when pencil is dull', () => {
       const pointDurability = 43,
         pencil = Pencil(pointDurability),
         output = pencil.write("When fate hands you a lemon, make lemonade or Tea");
 
-      expect(output).to.equal("When fate hands you a lemon, make lemonade or Tea ");
+      expect(output).to.equal("When fate hands you a lemon, make lemonade       ");
+    });
+
+    it('whitespace does not degrade durability', () => {
+      const pointDurability = 5,
+        pencil = Pencil(pointDurability),
+        output = pencil.write("w    ");
+
+      expect(output).to.equal("w    ");
     });
     
     it('lower-case letters degrades pencil point by one', () => {
+      const pointDurability1 = 3,
+        pencil1 = Pencil(pointDurability1),
+        output1 = pencil1.write("when");
+
+      expect(output1).to.equal("whe ");
+
+      const pointDurability2 = 4,
+        pencil2 = Pencil(pointDurability2),
+        output2 = pencil2.write("when");
+
+      expect(output2).to.equal("when");
+    });
+
+    it('upper-case letters degrades pencil point by two', () => {
       const pointDurability = 4,
         pencil = Pencil(pointDurability),
-        output = pencil.write("when");
+        output = pencil.write("When");
 
-      expect(output).to.equal("when");
+      expect(output).to.equal("Whe ");
     });
   });
 
