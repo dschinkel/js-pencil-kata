@@ -3,7 +3,7 @@ import Paper from './Paper';
 let paper, originalDurability = 0;
 
 function write(text) {
-  const finalText = addDurabilityOffsetSpaces(text);
+  const finalText = formatTextForDurability(text);
   return paper.write(finalText);
 }
 
@@ -42,10 +42,11 @@ function trimTextForScore(textDurabilityOverflow, text) {
     const textTrimmed = text.substring(0, text.length - textDurabilityOverflow);
     finalText = addWhitespace(text, textDurabilityOverflow, textTrimmed);
   }
+
   return finalText;
 }
 
-function addDurabilityOffsetSpaces(text) {
+function formatTextForDurability(text) {
   const durabilityDegradeScore = scoreDurabilityDegradation(text),
     textDurabilityOverflow = durabilityDegradeScore - originalDurability;
 
