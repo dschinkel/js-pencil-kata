@@ -74,9 +74,9 @@ function sharpen() {
 function erase(text){
   const existingText = paper.read(),
     lastFoundIndex = existingText.lastIndexOf(text),
-    preceedingText = existingText.substring(0, lastFoundIndex),
+    precedingText = existingText.substring(0, lastFoundIndex),
     textWithLastOccurance = existingText.substring(lastFoundIndex, existingText.length),
-    finalText = `${preceedingText}${textWithLastOccurance.replace(text, "")}`;
+    finalText = `${precedingText}${textWithLastOccurance.replace(text, "")}`;
 
   return finalText;
 }
