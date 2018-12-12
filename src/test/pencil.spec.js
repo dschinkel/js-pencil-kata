@@ -75,13 +75,31 @@ describe('Pencil - Sharpening', () => {
 
   it('regains original durability when sharpened', () => {
     const pointDurability = 17,
-      pencil = Pencil(pointDurability),
-      output = pencil.write("When fate hands you");
+      pencilLength = 2,
+      pencil = Pencil(pointDurability, pencilLength);
 
+    pencil.write("When fate hands you");
     pencil.sharpen();
     const sharpenedOutput = pencil.write(" When");
 
     expect(sharpenedOutput).to.equal("When fate hands you When");
+  });
+
+  it('point durability is not restored when pencil can no longer be sharpened', () => {
+    const pointDurability = 2,
+      pencilLength = 3,
+      pencil = Pencil(pointDurability, pencilLength);
+
+    pencil.write("W");
+    pencil.sharpen();
+    pencil.write("W");
+
+    pencil.sharpen();
+    pencil.sharpen();
+
+    const output = pencil.write("W");
+
+    expect(output).to.equal("WWW");
   });
 
 });

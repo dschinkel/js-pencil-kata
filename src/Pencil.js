@@ -1,6 +1,6 @@
 import Paper from './Paper';
 
-let paper, originalDurabilty = 0, durablity = 0;
+let paper, originalDurabilty = 0, durablity = 0, currentLength = 0;
 
 function updateCurrentDurability(durabilityDegradeScore) {
   durablity = durabilityDegradeScore;
@@ -62,13 +62,17 @@ function formatTextForDurability(text, degradeScore) {
 }
 
 function sharpen() {
-  durablity = originalDurabilty;
+  if (currentLength > 1) {
+    durablity = originalDurabilty;
+    currentLength -= 1;
+  }
 }
 
-const Pencil = (pointDurability) => {
+const Pencil = (pointDurability, length) => {
   paper = Paper();
   durablity = pointDurability;
   originalDurabilty = pointDurability;
+  currentLength = length;
 
   return {
     write,
