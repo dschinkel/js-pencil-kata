@@ -8,10 +8,10 @@ function updateCurrentDurability(durabilityDegradeScore) {
 }
 
 function write(text) {
-  const durabilityDegradeScore = scoreDurabilityDegradation(text),
-    finalText = formatTextForDurability(text, durabilityDegradeScore);
+  const degradeScore = scoreDurabilityDegradation(text),
+    finalText = formatTextForDurability(text, degradeScore);
 
-  updateCurrentDurability(durablity - durabilityDegradeScore);
+  updateCurrentDurability(durablity - degradeScore);
 
   return paper.write(finalText);
 }
