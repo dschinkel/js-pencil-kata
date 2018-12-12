@@ -6,7 +6,7 @@ describe('Pencil - Write', () => {
   const initialText = "When fate hands you a lemon";
 
   it('we have a pencil to write with', () => {
-    expect(Pencil(0)).to.exist;
+    expect(Pencil()).to.exist;
   });
 
   it('writes text to a piece of paper', () => {
