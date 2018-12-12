@@ -72,7 +72,8 @@ describe('Pencil - Point Degradation', () => {
 });
 
 describe('Pencil - Sharpening', () => {
-  it.only('regains original durability when sharpened', () => {
+
+  it('regains original durability when sharpened', () => {
     const pointDurability = 17,
       pencil = Pencil(pointDurability),
       output = pencil.write("When fate hands you");
@@ -82,6 +83,5 @@ describe('Pencil - Sharpening', () => {
 
     expect(sharpenedOutput).to.equal("When fate hands you When");
   });
-
 
 });
