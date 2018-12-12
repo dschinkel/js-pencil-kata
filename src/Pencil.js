@@ -29,14 +29,6 @@ function scorePointDegradation(text) {
   return score;
 }
 
-function scoreLowerCase(char) {
-  return !isUpperCase(char) ? 1 : 0;
-}
-
-function scoreUpperCase(char) {
-  return isUpperCase(char) ? 2 : 0;
-}
-
 function addWhitespace(text, textOverflow, durabilityText) {
   const totalWhitespaceToPad = text.length - durablity || textOverflow;
 
@@ -65,13 +57,11 @@ function formatTextForDurability(text, degradeScore) {
 }
 
 function sharpen() {
-  if (currentLength > 1) {
-    durablity = originalDurabilty;
-    currentLength -= 1;
-  }
+  durablity = currentLength > 1 ? originalDurabilty : durablity;
+  currentLength -= 1;
 }
 
-function erase(text){
+function erase(text) {
   const existingText = paper.read(),
     lastFoundIndex = existingText.lastIndexOf(text),
     precedingText = existingText.substring(0, lastFoundIndex),
@@ -79,6 +69,14 @@ function erase(text){
     finalText = `${precedingText}${textWithLastOccurance.replace(text, "")}`;
 
   return finalText;
+}
+
+function scoreLowerCase(char) {
+  return !isUpperCase(char) ? 1 : 0;
+}
+
+function scoreUpperCase(char) {
+  return isUpperCase(char) ? 2 : 0;
 }
 
 const Pencil = (pointDurability, length) => {
