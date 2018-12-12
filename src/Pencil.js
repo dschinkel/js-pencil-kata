@@ -19,19 +19,29 @@ function isUpperCase(text) {
   return text === text.toUpperCase();
 }
 
+function isWhitespace(text) {
+  return text === ' ';
+}
+
 function scoreDurabilityDegradation(text) {
-  let score = 0, i;
+  let score = 0, i, character;
 
   for (i = 0; i < text.length; i += 1) {
-    if (text.charAt(i) === ' ') { continue; }
-    else if (!isUpperCase(text.charAt(i))) {
-      score += 1;
-    } else if (isUpperCase(text.charAt(i))) {
-      score += 2;
-    }
+    character = text.charAt(i);
+
+    if (isWhitespace(character)) { continue; }
+    score += scoreLowerCase(character) + scoreUpperCase(character);
   }
 
   return score;
+}
+
+function scoreLowerCase(char) {
+  return !isUpperCase(char) ? 1 : 0;
+}
+
+function scoreUpperCase(char) {
+  return isUpperCase(char) ? 2 : 0;
 }
 
 function addWhitespace(text, textOverflow, durabilityText) {
@@ -73,8 +83,7 @@ function erase(text){
     lastFoundIndex = existingText.lastIndexOf(text),
     preceedingText = existingText.substring(0, lastFoundIndex),
     textWithLastOccurance = existingText.substring(lastFoundIndex, existingText.length),
-    textWithoutLastOccurance = textWithLastOccurance.replace(text, ""),
-    finalText = `${preceedingText}${textWithoutLastOccurance}`;
+    finalText = `${preceedingText}${textWithLastOccurance.replace(text, "")}`;
 
   return finalText;
 }
