@@ -3,15 +3,15 @@ import { isUpperCase, isWhitespace } from './test/Utility';
 
 let paper, originalDurabilty = 0, durablity = 0, currentLength = 0;
 
-function updateCurrentDurability(durabilityDegradeScore) {
-  durablity = durabilityDegradeScore;
+function updateCurrentDurability(degradeScore) {
+  durablity -= degradeScore;
 }
 
 function write(text) {
   const degradeScore = scorePointDegradation(text),
     finalText = formatTextForDurability(text, degradeScore);
 
-  updateCurrentDurability(durablity - degradeScore);
+  updateCurrentDurability(degradeScore);
 
   return paper.write(finalText);
 }
