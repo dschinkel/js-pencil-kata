@@ -112,8 +112,12 @@ describe('Pencil - Erasing', () => {
       pencil = Pencil(pointDurability, pencilLength);
 
     pencil.write("SueDaveSueDaveSueDave");
-    const output = pencil.erase("Dave");
+    const output1 = pencil.erase("Dave");
+    expect(output1).to.equal("SueDaveSueDaveSue");
 
-    expect(output).to.equal("SueDaveSueDaveSue");
+    const pencil2 = Pencil(pointDurability, pencilLength);
+    pencil2.write("SueDave    SueDave");
+    const output2 = pencil2.erase("Dave");
+    expect(output2).to.equal("SueDave    Sue");
   });
 });
