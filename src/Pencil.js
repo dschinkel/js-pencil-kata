@@ -68,6 +68,17 @@ function sharpen() {
   }
 }
 
+function erase(text){
+  const existingText = paper.read(),
+    lastFoundIndex = existingText.lastIndexOf(text),
+    preceedingText = existingText.substring(0, lastFoundIndex),
+    textWithLastOccurance = existingText.substring(lastFoundIndex, existingText.length),
+    textWithoutLastOccurance = textWithLastOccurance.replace(text, ""),
+    finalText = `${preceedingText}${textWithoutLastOccurance}`;
+
+  return finalText;
+}
+
 const Pencil = (pointDurability, length) => {
   paper = Paper();
   durablity = pointDurability;
@@ -75,8 +86,9 @@ const Pencil = (pointDurability, length) => {
   currentLength = length;
 
   return {
-    write,
-    sharpen
+    erase,
+    sharpen,
+    write
   };
 };
 

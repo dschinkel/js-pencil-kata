@@ -93,13 +93,27 @@ describe('Pencil - Sharpening', () => {
     pencil.write("W");
     pencil.sharpen();
     pencil.write("W");
-
     pencil.sharpen();
     pencil.sharpen();
-
+    pencil.write("A");
+    pencil.write("B");
+    pencil.write("C");
     const output = pencil.write("W");
 
-    expect(output).to.equal("WWW");
+    expect(output).to.equal('WWA         ');
   });
+});
 
+describe('Pencil - Erasing', () => {
+
+  it('erases last occurrence of specified text', () => {
+    const pointDurability = 30,
+      pencilLength = 1,
+      pencil = Pencil(pointDurability, pencilLength);
+
+    pencil.write("SueDaveSueDaveSueDave");
+    const output = pencil.erase("Dave");
+
+    expect(output).to.equal("SueDaveSueDaveSue");
+  });
 });
