@@ -8,7 +8,7 @@ function updateCurrentDurability(durabilityDegradeScore) {
 }
 
 function write(text) {
-  const degradeScore = scoreDurabilityDegradation(text),
+  const degradeScore = scorePointDegradation(text),
     finalText = formatTextForDurability(text, degradeScore);
 
   updateCurrentDurability(durablity - degradeScore);
@@ -16,7 +16,7 @@ function write(text) {
   return paper.write(finalText);
 }
 
-function scoreDurabilityDegradation(text) {
+function scorePointDegradation(text) {
   let score = 0, i, character;
 
   for (i = 0; i < text.length; i += 1) {
