@@ -65,7 +65,7 @@ function sharpen() {
   todo: erase() uses clean code (good variable names / intent),
   but try other ways to simplify this, e.g. regex, etc.
 */
-function (text) {
+function erase(text) {
   const currentText = paper.read(),
     lastFoundIndex = currentText.lastIndexOf(text),
     precedingText = currentText.substring(0, lastFoundIndex),
