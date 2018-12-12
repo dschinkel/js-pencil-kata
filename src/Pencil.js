@@ -1,9 +1,17 @@
 import Paper from './Paper';
 
-let paper, originalDurability = 0;
+let paper, originalDurabilty = 0, durablity = 0;
+
+function updateCurrentDurability(durabilityDegradeScore) {
+  durablity = durabilityDegradeScore;
+}
 
 function write(text) {
-  const finalText = formatTextForDurability(text);
+  const durabilityDegradeScore = scoreDurabilityDegradation(text),
+    finalText = formatTextForDurability(text, durabilityDegradeScore);
+
+  updateCurrentDurability(durablity - durabilityDegradeScore);
+
   return paper.write(finalText);
 }
 
@@ -27,7 +35,7 @@ function scoreDurabilityDegradation(text) {
 }
 
 function addWhitespace(text, textOverflow, durabilityText) {
-  const totalWhitespaceToPad = text.length - originalDurability || textOverflow;
+  const totalWhitespaceToPad = text.length - durablity || textOverflow;
 
   let textWithWhitespaces = durabilityText;
   textWithWhitespaces += ' '.repeat(totalWhitespaceToPad);
@@ -46,21 +54,25 @@ function trimTextForScore(textDurabilityOverflow, text) {
   return finalText;
 }
 
-function formatTextForDurability(text) {
-  const durabilityDegradeScore = scoreDurabilityDegradation(text),
-    textDurabilityOverflow = durabilityDegradeScore - originalDurability;
+function formatTextForDurability(text, degradeScore) {
+  const textDurabilityOverflow = degradeScore - durablity,
+    scoredText = trimTextForScore(textDurabilityOverflow, text);
 
-  const scoredDurabilityText = trimTextForScore(textDurabilityOverflow, text);
+  return scoredText || text;
+}
 
-  return scoredDurabilityText || text;
+function sharpen() {
+  durablity = originalDurabilty;
 }
 
 const Pencil = (pointDurability) => {
   paper = Paper();
-  originalDurability = pointDurability;
+  durablity = pointDurability;
+  originalDurabilty = pointDurability;
 
   return {
-    write
+    write,
+    sharpen
   };
 };
 
