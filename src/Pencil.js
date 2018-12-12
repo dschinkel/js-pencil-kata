@@ -61,12 +61,17 @@ function sharpen() {
   currentLength -= 1;
 }
 
-function erase(text) {
-  const existingText = paper.read(),
-    lastFoundIndex = existingText.lastIndexOf(text),
-    precedingText = existingText.substring(0, lastFoundIndex),
-    textWithLastOccurance = existingText.substring(lastFoundIndex, existingText.length),
-    finalText = `${precedingText}${textWithLastOccurance.replace(text, "")}`;
+/*
+  todo: erase() uses clean code (good variable names / intent),
+  but try other ways to simplify this, e.g. regex, etc.
+*/
+function (text) {
+  const currentText = paper.read(),
+    lastFoundIndex = currentText.lastIndexOf(text),
+    precedingText = currentText.substring(0, lastFoundIndex),
+    textWithLastOccurance = currentText.substring(lastFoundIndex, currentText.length),
+    erasedText = textWithLastOccurance.replace(text, ""),
+    finalText = `${precedingText}${erasedText}`;
 
   return finalText;
 }
