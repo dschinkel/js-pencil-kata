@@ -1,4 +1,5 @@
 import Paper from './Paper';
+import { isUpperCase, isWhitespace } from './test/Utility';
 
 let paper, originalDurabilty = 0, durablity = 0, currentLength = 0;
 
@@ -13,14 +14,6 @@ function write(text) {
   updateCurrentDurability(durablity - durabilityDegradeScore);
 
   return paper.write(finalText);
-}
-
-function isUpperCase(text) {
-  return text === text.toUpperCase();
-}
-
-function isWhitespace(text) {
-  return text === ' ';
 }
 
 function scoreDurabilityDegradation(text) {
